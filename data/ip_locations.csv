@@ -1,0 +1,95 @@
+ip,city,country
+1.1.1.1,Los Angeles,United States
+8.8.8.8,Mountain View,United States
+208.67.222.222,San Francisco,United States
+1.0.0.1,Los Angeles,United States
+9.9.9.9,Reston,United States
+140.82.112.4,San Francisco,United States
+140.82.112.3,San Francisco,United States
+140.82.112.2,San Francisco,United States
+140.82.112.1,San Francisco,United States
+13.107.42.14,Redmond,United States
+20.190.128.0,Redmond,United States
+20.190.128.1,Redmond,United States
+20.190.128.2,Redmond,United States
+20.190.128.3,Redmond,United States
+185.199.108.153,Frankfurt,Germany
+185.199.109.153,Frankfurt,Germany
+185.199.110.153,Frankfurt,Germany
+185.199.111.153,Frankfurt,Germany
+151.101.1.140,London,United Kingdom
+151.101.65.140,London,United Kingdom
+151.101.129.140,London,United Kingdom
+151.101.193.140,London,United Kingdom
+93.184.216.34,London,United Kingdom
+192.168.1.1,Local Network,Private
+10.0.0.1,Local Network,Private
+172.16.0.1,Local Network,Private
+127.0.0.1,Localhost,Private
+203.0.113.1,Test Network,Private
+198.51.100.1,Test Network,Private
+192.0.2.1,Test Network,Private
+1.2.3.4,Tokyo,Japan
+5.6.7.8,Paris,France
+9.10.11.12,Sydney,Australia
+13.14.15.16,Singapore,Singapore
+17.18.19.20,Mumbai,India
+21.22.23.24,São Paulo,Brazil
+25.26.27.28,Moscow,Russia
+29.30.31.32,Amsterdam,Netherlands
+33.34.35.36,Stockholm,Sweden
+37.38.39.40,Oslo,Norway
+41.42.43.44,Copenhagen,Denmark
+45.46.47.48,Helsinki,Finland
+49.50.51.52,Zurich,Switzerland
+53.54.55.56,Vienna,Austria
+57.58.59.60,Prague,Czech Republic
+61.62.63.64,Warsaw,Poland
+65.66.67.68,Budapest,Hungary
+69.70.71.72,Bucharest,Romania
+73.74.75.76,Sofia,Bulgaria
+77.78.79.80,Athens,Greece
+81.82.83.84,Madrid,Spain
+85.86.87.88,Rome,Italy
+89.90.91.92,Lisbon,Portugal
+93.94.95.96,Dublin,Ireland
+97.98.99.100,Brussels,Belgium
+101.102.103.104,Luxembourg,Luxembourg
+105.106.107.108,Monaco,Monaco
+109.110.111.112,Andorra,Andorra
+113.114.115.116,San Marino,San Marino
+117.118.119.120,Vatican City,Vatican City
+121.122.123.124,Beijing,China
+125.126.127.128,Shanghai,China
+129.130.131.132,Hong Kong,Hong Kong
+133.134.135.136,Taipei,Taiwan
+137.138.139.140,Seoul,South Korea
+141.142.143.144,Manila,Philippines
+145.146.147.148,Bangkok,Thailand
+149.150.151.152,Ho Chi Minh City,Vietnam
+153.154.155.156,Jakarta,Indonesia
+157.158.159.160,Kuala Lumpur,Malaysia
+161.162.163.164,Dhaka,Bangladesh
+165.166.167.168,Karachi,Pakistan
+169.170.171.172,New Delhi,India
+173.174.175.176,Colombo,Sri Lanka
+177.178.179.180,Kathmandu,Nepal
+181.182.183.184,Thimphu,Bhutan
+185.186.187.188,Malé,Maldives
+189.190.191.192,Tehran,Iran
+193.194.195.196,Baghdad,Iraq
+197.198.199.200,Ankara,Turkey
+201.202.203.204,Cairo,Egypt
+205.206.207.208,Tripoli,Libya
+209.210.211.212,Tunis,Tunisia
+213.214.215.216,Algiers,Algeria
+217.218.219.220,Rabat,Morocco
+221.222.223.224,Nouakchott,Mauritania
+225.226.227.228,Dakar,Senegal
+229.230.231.232,Banjul,Gambia
+233.234.235.236,Conakry,Guinea
+237.238.239.240,Freetown,Sierra Leone
+241.242.243.244,Monrovia,Liberia
+245.246.247.248,Abidjan,Ivory Coast
+249.250.251.252,Accra,Ghana
+253.254.255.0,Lagos,Nigeria
