@@ -36,7 +36,7 @@ func main() {
 	)
 
 	// Create repository factory
-	repoFactory := repository.NewRepositoryFactory(&cfg.Database, nil)
+	repoFactory := repository.NewRepositoryFactory(&cfg.Database)
 
 	// Create repository
 	repo, err := repoFactory.CreateRepositoryFromConfig()

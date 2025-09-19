@@ -22,26 +22,18 @@ type FileRepository struct {
 	mu       sync.RWMutex
 	loaded   bool
 	loadTime time.Time
-	metrics  RepositoryMetrics
 }
 
 // NewFileRepository creates a new file-based repository (CSV format)
-func NewFileRepository(cfg *config.DatabaseConfig, metrics RepositoryMetrics) *FileRepository {
+func NewFileRepository(cfg *config.DatabaseConfig) *FileRepository {
 	return &FileRepository{
-		config:  cfg,
-		data:    make(map[string]*models.Location),
-		metrics: metrics,
+		config: cfg,
+		data:   make(map[string]*models.Location),
 	}
 }
 
 // Initialize loads the CSV data into memory
 func (r *FileRepository) Initialize(ctx context.Context) error {
-	start := time.Now()
-	defer func() {
-		if r.metrics != nil {
-			r.metrics.RecordLookupTime(time.Since(start).Seconds())
-		}
-	}()
 
 	file, err := os.Open(r.config.FilePath)
 	if err != nil {
@@ -130,12 +122,6 @@ func (r *FileRepository) processRecord(record []string) error {
 
 // FindLocation finds the location for a given IP address
 func (r *FileRepository) FindLocation(ctx context.Context, ip string) (*models.Location, error) {
-	start := time.Now()
-	defer func() {
-		if r.metrics != nil {
-			r.metrics.RecordLookupTime(time.Since(start).Seconds())
-		}
-	}()
 
 	r.mu.RLock()
 	loaded := r.loaded
@@ -153,14 +139,7 @@ func (r *FileRepository) FindLocation(ctx context.Context, ip string) (*models.L
 	r.mu.RUnlock()
 
 	if !exists {
-		if r.metrics != nil {
-			r.metrics.RecordLookupCount(false)
-		}
 		return nil, fmt.Errorf("location not found for IP: %s", ip)
-	}
-
-	if r.metrics != nil {
-		r.metrics.RecordLookupCount(true)
 	}
 
 	return location, nil

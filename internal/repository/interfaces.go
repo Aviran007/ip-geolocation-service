@@ -25,17 +25,3 @@ type RepositoryFactory interface {
 	CreateRepository(dbType string) (IPRepository, error)
 }
 
-// RepositoryMetrics defines metrics interface for repositories
-type RepositoryMetrics interface {
-	// RecordLookupTime records the time taken for a lookup operation
-	RecordLookupTime(duration float64)
-
-	// RecordLookupCount records the number of lookups
-	RecordLookupCount(success bool)
-
-	// RecordCacheHit records a cache hit
-	RecordCacheHit()
-
-	// RecordCacheMiss records a cache miss
-	RecordCacheMiss()
-}

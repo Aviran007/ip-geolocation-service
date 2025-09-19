@@ -7,15 +7,13 @@ import (
 
 // RepositoryFactoryImpl implements RepositoryFactory
 type RepositoryFactoryImpl struct {
-	config  *config.DatabaseConfig
-	metrics RepositoryMetrics
+	config *config.DatabaseConfig
 }
 
 // NewRepositoryFactory creates a new repository factory
-func NewRepositoryFactory(cfg *config.DatabaseConfig, metrics RepositoryMetrics) *RepositoryFactoryImpl {
+func NewRepositoryFactory(cfg *config.DatabaseConfig) *RepositoryFactoryImpl {
 	return &RepositoryFactoryImpl{
-		config:  cfg,
-		metrics: metrics,
+		config: cfg,
 	}
 }
 
@@ -23,7 +21,7 @@ func NewRepositoryFactory(cfg *config.DatabaseConfig, metrics RepositoryMetrics)
 func (f *RepositoryFactoryImpl) CreateRepository(dbType string) (IPRepository, error) {
 	switch dbType {
 	case config.DatabaseTypeCSV:
-		return NewFileRepository(f.config, f.metrics), nil
+		return NewFileRepository(f.config), nil
 	case config.DatabaseTypeJSON:
 		// TODO: Implement JSON file repository
 		return nil, fmt.Errorf("json repository not implemented yet")

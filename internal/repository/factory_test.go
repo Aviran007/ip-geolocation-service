@@ -12,9 +12,7 @@ func TestNewRepositoryFactory(t *testing.T) {
 		FilePath: "/test/path.csv",
 	}
 
-	metrics := &MockRepositoryMetrics{}
-
-	factory := NewRepositoryFactory(cfg, metrics)
+	factory := NewRepositoryFactory(cfg)
 
 	if factory == nil {
 		t.Fatal("NewRepositoryFactory() returned nil")
@@ -22,10 +20,6 @@ func TestNewRepositoryFactory(t *testing.T) {
 
 	if factory.config != cfg {
 		t.Error("Factory config not set correctly")
-	}
-
-	if factory.metrics != metrics {
-		t.Error("Factory metrics not set correctly")
 	}
 }
 
@@ -35,8 +29,7 @@ func TestRepositoryFactory_CreateRepository(t *testing.T) {
 		FilePath: "/test/path.csv",
 	}
 
-	metrics := &MockRepositoryMetrics{}
-	factory := NewRepositoryFactory(cfg, metrics)
+		factory := NewRepositoryFactory(cfg)
 
 	tests := []struct {
 		name        string
@@ -149,8 +142,7 @@ func TestRepositoryFactory_CreateRepositoryFromConfig(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			metrics := &MockRepositoryMetrics{}
-			factory := NewRepositoryFactory(tt.config, metrics)
+		factory := NewRepositoryFactory(tt.config)
 
 			// Handle nil config case specially
 			if tt.config == nil {
@@ -185,23 +177,3 @@ func TestRepositoryFactory_CreateRepositoryFromConfig(t *testing.T) {
 	}
 }
 
-// MockRepositoryMetrics implements RepositoryMetrics for testing
-type MockRepositoryMetrics struct {
-	// Add any metrics fields you need for testing
-}
-
-func (m *MockRepositoryMetrics) RecordLookupTime(duration float64) {
-	// Mock implementation
-}
-
-func (m *MockRepositoryMetrics) RecordLookupCount(success bool) {
-	// Mock implementation
-}
-
-func (m *MockRepositoryMetrics) RecordCacheHit() {
-	// Mock implementation
-}
-
-func (m *MockRepositoryMetrics) RecordCacheMiss() {
-	// Mock implementation
-}

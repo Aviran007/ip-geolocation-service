@@ -47,7 +47,7 @@ func TestFileRepository_Initialize(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 
 	// Initialize repository
 	ctx := context.Background()
@@ -101,7 +101,7 @@ func TestFileRepository_InvalidData(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 
 	// Initialize repository (should handle invalid data gracefully)
 	ctx := context.Background()
@@ -128,7 +128,7 @@ func TestFileRepository_FileNotFound(t *testing.T) {
 		FilePath: "/non/existent/file.csv",
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 
 	// Initialize repository should fail
 	ctx := context.Background()
@@ -145,7 +145,7 @@ func TestFileRepository_NotInitialized(t *testing.T) {
 		FilePath: "/some/file.csv",
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 
 	// FindLocation should fail
 	ctx := context.Background()
@@ -172,7 +172,7 @@ func TestFileRepository_ConcurrentAccess(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 
 	// Initialize repository
 	ctx := context.Background()
@@ -220,7 +220,7 @@ func TestFileRepository_Performance(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 
 	// Initialize repository
 	ctx := context.Background()
@@ -274,7 +274,7 @@ func TestFileRepository_EdgeCases(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 
 	// Initialize repository
 	ctx := context.Background()
@@ -346,7 +346,7 @@ func TestFileRepository_Close(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 	ctx := context.Background()
 	err = repo.Initialize(ctx)
 	if err != nil {
@@ -383,7 +383,7 @@ func TestFileRepository_HealthCheck(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 	ctx := context.Background()
 
 	// Test HealthCheck before initialization
@@ -418,7 +418,7 @@ func TestFileRepository_HealthCheck_NotInitialized(t *testing.T) {
 		FilePath: "/nonexistent/path.csv",
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 	ctx := context.Background()
 
 	// Test HealthCheck on uninitialized repository
@@ -434,7 +434,7 @@ func TestFileRepository_Initialize_FileNotFound(t *testing.T) {
 		FilePath: "/nonexistent/path.csv",
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 	ctx := context.Background()
 
 	// Test Initialize with non-existent file
@@ -465,7 +465,7 @@ func TestFileRepository_Initialize_InvalidCSV(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 	ctx := context.Background()
 
 	// Test Initialize with invalid CSV
@@ -492,7 +492,7 @@ func TestFileRepository_Initialize_EmptyFile(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 	ctx := context.Background()
 
 	// Test Initialize with empty file
@@ -521,7 +521,7 @@ func TestFileRepository_Initialize_HeaderOnly(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 	ctx := context.Background()
 
 	// Test Initialize with header only
@@ -567,7 +567,7 @@ invalid-ip,Invalid City,Invalid Country
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 	ctx := context.Background()
 	err = repo.Initialize(ctx)
 	if err != nil {
@@ -626,7 +626,7 @@ func TestFileRepository_IsValidIP(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 	ctx := context.Background()
 	err = repo.Initialize(ctx)
 	if err != nil {
@@ -689,7 +689,7 @@ func TestFileRepository_ConcurrentAccess_Extended(t *testing.T) {
 		FilePath: testFile,
 	}
 
-	repo := NewFileRepository(cfg, nil)
+	repo := NewFileRepository(cfg)
 	ctx := context.Background()
 	err = repo.Initialize(ctx)
 	if err != nil {
