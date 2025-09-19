@@ -273,10 +273,6 @@ make install-tools
 make run-dev    # Development mode
 make run-prod   # Production mode
 
-# All-in-one commands
-make dev        # Full development cycle
-make ci         # CI pipeline
-
 # Clean up
 make clean
 make clean-port # Clean port 8080
