@@ -9,8 +9,8 @@ services:
       - PORT=8080
       - DATABASE_TYPE=csv
       - DATABASE_FILE_PATH=/app/data/ip_locations.csv
-      - RATE_LIMIT_RPS=20
-      - RATE_LIMIT_BURST=20
+      - RATE_LIMIT_RPS=5
+      - RATE_LIMIT_BURST=5
       - RATE_LIMIT_CLEANUP_INTERVAL=1m
       - RATE_LIMIT_INACTIVE_THRESHOLD=5m
       - LOG_LEVEL=info
