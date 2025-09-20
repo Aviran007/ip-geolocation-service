@@ -12,7 +12,7 @@ help: ## Show this help message
 build: ## Build the application
 	@echo "🔨 Building IP Geolocation Service..."
 	@echo "=========================================="
-	go build -o bin/ip-geolocation-service cmd/server/main.go
+	go build -o bin/ip-geolocation-service ./cmd/server
 	@echo "=========================================="
 	@echo "✅ Build completed! Binary: bin/ip-geolocation-service"
 
@@ -20,7 +20,7 @@ build: ## Build the application
 run: ## Run the application locally
 	@echo "🚀 Running IP Geolocation Service..."
 	@echo "=========================================="
-	go run cmd/server/main.go
+	go run ./cmd/server
 
 # Run tests
 test: ## Run all tests
@@ -170,11 +170,11 @@ install-tools: ## Install development tools
 # Run with different configurations
 run-dev: ## Run with development configuration
 	@echo "Running in development mode..."
-	PORT=8080 DATABASE_TYPE=csv DATABASE_FILE_PATH=./data/ip_locations.csv RATE_LIMIT_RPS=5 RATE_LIMIT_BURST=10 LOG_LEVEL=debug go run cmd/server/main.go
+	PORT=8080 DATABASE_TYPE=csv DATABASE_FILE_PATH=./data/ip_locations.csv RATE_LIMIT_RPS=5 RATE_LIMIT_BURST=10 LOG_LEVEL=debug go run ./cmd/server
 
 run-prod: ## Run with production configuration
 	@echo "Running in production mode..."
-	PORT=8080 DATABASE_TYPE=csv DATABASE_FILE_PATH=./data/ip_locations.csv RATE_LIMIT_RPS=20 RATE_LIMIT_BURST=20 LOG_LEVEL=info LOG_FORMAT=json go run cmd/server/main.go
+	PORT=8080 DATABASE_TYPE=csv DATABASE_FILE_PATH=./data/ip_locations.csv RATE_LIMIT_RPS=20 RATE_LIMIT_BURST=20 LOG_LEVEL=info LOG_FORMAT=json go run ./cmd/server
 
 # API testing
 test-api: ## Test API endpoints
