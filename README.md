@@ -160,6 +160,64 @@ data/               # Sample data files
 scripts/            # Testing and utility scripts
 ```
 
+### Architecture Diagram
+
+```
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Client    │───▶│Load Balancer│───▶│ API Server  │
+└─────────────┘    └─────────────┘    └─────────────┘
+                                              │
+                                              ▼
+                                    ┌─────────────────┐
+                                    │ Middleware Stack│
+                                    │ ┌─────────────┐ │
+                                    │ │  Recovery   │ │
+                                    │ │  Logging    │ │
+                                    │ │ Rate Limit  │ │
+                                    │ │    CORS     │ │
+                                    │ └─────────────┘ │
+                                    └─────────────────┘
+                                              │
+                                              ▼
+                                    ┌─────────────────┐
+                                    │  Handler Layer  │
+                                    │ ┌─────────────┐ │
+                                    │ │ IP Handler  │ │
+                                    │ │Health Check │ │
+                                    │ │Debug Handler│ │
+                                    │ └─────────────┘ │
+                                    └─────────────────┘
+                                              │
+                                              ▼
+                                    ┌─────────────────┐
+                                    │  Service Layer  │
+                                    │ ┌─────────────┐ │
+                                    │ │ IP Service  │ │
+                                    │ │IP Validator │ │
+                                    │ └─────────────┘ │
+                                    └─────────────────┘
+                                              │
+                                              ▼
+                                    ┌─────────────────┐
+                                    │Repository Layer │
+                                    │ ┌─────────────┐ │
+                                    │ │Repository   │ │
+                                    │ │Interface    │ │
+                                    │ │File Repo    │ │
+                                    │ └─────────────┘ │
+                                    └─────────────────┘
+                                              │
+                                              ▼
+                                    ┌─────────────────┐
+                                    │   Data Layer    │
+                                    │ ┌─────────────┐ │
+                                    │ │CSV Data File│ │
+                                    │ └─────────────┘ │
+                                    └─────────────────┘
+```
+
+For detailed Mermaid diagrams with request flow and component details, see the [Architecture Diagram](docs/architecture-diagram.md).
+
 ### Key Components
 
 - **Handlers**: HTTP request/response handling with proper error handling
