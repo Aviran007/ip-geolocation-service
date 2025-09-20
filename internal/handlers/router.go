@@ -15,7 +15,7 @@ type Router struct {
 	rateLimiter interface {
 		GetMapState() map[string]interface{}
 	}
-	logger      *slog.Logger
+	logger *slog.Logger
 }
 
 // NewRouter creates a new router
@@ -27,7 +27,7 @@ func NewRouter(ipService services.IPService, logger *slog.Logger) *Router {
 }
 
 // NewRouterWithRateLimiter creates a new router with rate limiter
-func NewRouterWithRateLimiter(ipService services.IPService, rateLimiter interface{GetMapState() map[string]interface{}}, logger *slog.Logger) *Router {
+func NewRouterWithRateLimiter(ipService services.IPService, rateLimiter interface{ GetMapState() map[string]interface{} }, logger *slog.Logger) *Router {
 	return &Router{
 		ipHandler:   NewIPHandler(ipService, logger),
 		rateLimiter: rateLimiter,
@@ -72,16 +72,16 @@ func (r *Router) debugRateLimiter(w http.ResponseWriter, req *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	state := r.rateLimiter.GetMapState()
-	
+
 	// Pretty print JSON
 	jsonData, err := json.MarshalIndent(state, "", "  ")
 	if err != nil {
 		http.Error(w, "Failed to marshal state", http.StatusInternalServerError)
 		return
 	}
-	
+
 	w.Write(jsonData)
 }
 

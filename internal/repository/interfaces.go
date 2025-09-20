@@ -24,4 +24,3 @@ type IPRepository interface {
 type RepositoryFactory interface {
 	CreateRepository(dbType string) (IPRepository, error)
 }
-

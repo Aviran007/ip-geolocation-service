@@ -29,7 +29,7 @@ func TestRepositoryFactory_CreateRepository(t *testing.T) {
 		FilePath: "/test/path.csv",
 	}
 
-		factory := NewRepositoryFactory(cfg)
+	factory := NewRepositoryFactory(cfg)
 
 	tests := []struct {
 		name        string
@@ -142,7 +142,7 @@ func TestRepositoryFactory_CreateRepositoryFromConfig(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-		factory := NewRepositoryFactory(tt.config)
+			factory := NewRepositoryFactory(tt.config)
 
 			// Handle nil config case specially
 			if tt.config == nil {
@@ -176,4 +176,3 @@ func TestRepositoryFactory_CreateRepositoryFromConfig(t *testing.T) {
 		})
 	}
 }
-

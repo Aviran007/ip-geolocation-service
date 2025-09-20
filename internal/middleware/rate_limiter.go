@@ -55,7 +55,7 @@ func (rl *RateLimiter) calculateCurrentTokens(clientID string, now time.Time) in
 	timeElapsed := now.Sub(lastUpdate)
 	timeElapsedSeconds := timeElapsed.Seconds()
 	tokensToAdd := int(timeElapsedSeconds * float64(rl.requestsPerSecond))
-	
+
 	currentTokens := rl.tokens[clientID] + tokensToAdd
 	if currentTokens > rl.burstSize {
 		currentTokens = rl.burstSize
@@ -63,7 +63,7 @@ func (rl *RateLimiter) calculateCurrentTokens(clientID string, now time.Time) in
 	if currentTokens < 0 {
 		currentTokens = 0
 	}
-	
+
 	return currentTokens
 }
 
@@ -227,7 +227,7 @@ func RateLimitMiddleware(rateLimiter *RateLimiter) func(http.Handler) http.Handl
 func DebugRateLimitMiddleware(rateLimiter *RateLimiter) func(http.Handler) http.Handler {
 	// Create debug rate limiter once, not on every request
 	debugRateLimiter := NewRateLimiter(100, 200, 1*time.Second, 1*time.Minute, 5*time.Minute)
-	
+
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			// Only apply to debug endpoints
